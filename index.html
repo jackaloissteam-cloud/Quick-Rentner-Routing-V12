@@ -32,7 +32,23 @@ function addMin(t,m){const p=t.split(":").map(Number);const d=new Date();d.setHo
 async function calc(){clearErr();document.getElementById("log").innerHTML="";document.getElementById("btn").disabled=true;try{const names=parsePlaces();log("Orte erkannt: "+names.join(" | "));if(names.length<2)throw Error("Mindestens 2 Orte eingeben.");const coords=[];for(const n of names){coords.push(await geocode(n));await sleep(500)}log("Gesamtroute wird geladen...");const fullRoute=await osrm(coords);let rows=[],current=document.getElementById("start").value||"09:00",stop=+document.getElementById("stop").value||0,total=0,drive=0;for(let i=0;i<coords.length;i++){let km=0,min=0;if(i>0){const part=await osrm([coords[i-1],coords[i]]);km=part.distance/1000;min=Math.round(part.duration/60);total+=km;drive+=min;current=addMin(current,min);await sleep(250)}const arr=current,st=i===coords.length-1?0:stop,dep=st?addMin(arr,st):"";rows.push({i:i+1,name:coords[i].name,lat:coords[i].lat,lon:coords[i].lon,arr,st,dep,km,min,total});if(st)current=dep}drawMap(coords,fullRoute,rows,total,drive);renderTable(rows);renderSummary(rows,total,drive);log("FERTIG.")}catch(e){console.error(e);err(e.message);log("FEHLER: "+e.message)}finally{document.getElementById("btn").disabled=false}}
 function drawMap(coords,route,rows,total,drive){layers.forEach(x=>map.removeLayer(x));layers=[];const pts=route.geometry.coordinates.map(p=>[p[1],p[0]]);const shadow=L.polyline(pts,{color:"#222",weight:9,opacity:.18}).addTo(map);const line=L.polyline(pts,{color:"#667eea",weight:5,opacity:.95}).addTo(map);layers.push(shadow,line);coords.forEach((c,i)=>{const color=i===0?"#28a745":(i===coords.length-1?"#dc3545":"#667eea");const icon=L.divIcon({className:"routeNumIcon",html:`<div class="numIcon" style="background:${color}">${i+1}</div>`,iconSize:[34,34],iconAnchor:[17,17]});const marker=L.marker([c.lat,c.lon],{icon}).addTo(map);marker.bindPopup(`<b>${i+1}. ${esc(c.name)}</b><br>${i===0?"Start":(i===coords.length-1?"Ziel":"Zwischenziel")}<br>Ankunft: ${rows[i].arr}<br>Bis dahin: ${rows[i].total.toFixed(1)} km`);layers.push(marker)});map.fitBounds(line.getBounds(),{padding:[45,45]});setTimeout(()=>map.invalidateSize(true),300);document.getElementById("mapPanel").innerHTML=`<b>Route berechnet</b><br>${coords.length} Stationen · ${total.toFixed(1)} km · ${drive} min Fahrzeit<div class="legend"><span class="leg"><span class="dot green"></span>Start</span><span class="leg"><span class="dot blue"></span>Zwischenziel</span><span class="leg"><span class="dot red"></span>Ziel</span></div>`}
 function renderTable(rows){document.getElementById("tbody").innerHTML=rows.map(r=>`<tr><td>${r.i}</td><td><b>${esc(r.name)}</b></td><td>${r.arr}</td><td>${r.st?r.st+" min":"-"}</td><td>${r.dep||"-"}</td><td>${r.i===1?"-":r.km.toFixed(1)+" km"}</td><td>${r.i===1?"-":r.min+" min"}</td><td>${r.total.toFixed(1)} km</td><td><span class="badge">OK</span></td></tr>`).join("");document.getElementById("tableCard").classList.remove("hidden")}
-function renderSummary(rows,km,drive){const stop=rows.reduce((s,r)=>s+r.st,0),rate=+document.getElementById("rate").value||13.9;document.getElementById("sstops").textContent=rows.length;document.getElementById("skm").textContent=km.toFixed(1);document.getElementById("sdrive").textContent=drive;document.getElementById("sstop").textContent=stop;document.getElementById("stime").textContent=drive+stop;document.getElementById("seuro").textContent=(km*rate).toFixed(2).replace(".",",");document.getElementById("sumCard").classList.remove("hidden")}
+function renderSummary(rows,km,drive){
+const stop=rows.reduce((s,r)=>s+r.st,0),
+rate=+document.getElementById("rate").value||13.9;
+
+document.getElementById("sstops").textContent=rows.length;
+document.getElementById("skm").textContent=km.toFixed(1);
+document.getElementById("sdrive").textContent=drive;
+document.getElementById("sstop").textContent=stop;
+document.getElementById("stime").textContent=drive+stop;
+
+document.getElementById("seuro").textContent=
+(((drive+stop)/60)*rate)
+.toFixed(2)
+.replace(".",",");
+
+document.getElementById("sumCard").classList.remove("hidden")
+}
 function esc(s){return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
 </script>
 </body></html>
