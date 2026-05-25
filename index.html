@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="de">
-<head>
+<head>Satz
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Route VPT Jedi Drude V6.6</title>
@@ -14,7 +14,7 @@ body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#22
 <div class="wrap">
 <div class="card head"><h1>📍 Route VPT Jedi Drude V6.6</h1><div>GitHub-Pages-Version: echte Karte, echte Route, nummerierte Marker, mobile Ansicht.</div></div>
 <div class="card">
-<div class="grid"><div><label for="start">Startzeit</label><input type="time" id="start" value="09:00"></div><div><label for="stop">Aufenthalt je Zwischenort</label><input type="number" id="stop" value="15" min="0"></div><div><label for="rate">Satz € / km</label><input type="number" id="rate" value="13.90" step="0.01"></div></div>
+<div class="grid"><div><label for="start">Startzeit</label><input type="time" id="start" value="09:00"></div><div><label for="stop">Aufenthalt je Zwischenort</label><input type="number" id="stop" value="15" min="0"></div><div><label for="rate">Satz € / Stunde</label><input type="number" id="rate" value="13.90" step="0.01"></div></div>
 <p><label for="places">Orte</label></p><textarea id="places">Erlensee Fulda Alsfeld Hanau</textarea><div class="hint">Eine Zeile geht für einfache Ortsnamen. Bei Orten mit Leerzeichen bitte je Ort eine neue Zeile nutzen, z. B. „Frankfurt am Main“.</div>
 <button id="btn" onclick="calc()">Route berechnen</button> <button class="secondary" onclick="demo()">Demo</button><div id="err" class="err"></div><h3>Debug</h3><div id="log" class="log"></div></div>
 <div class="card"><h2>🗺️ Kartenausgabe</h2><div id="mapWrap"><div id="map"></div><div id="mapPanel" class="mapPanel"><b>Noch keine Route berechnet</b><br>Orte eingeben und Route berechnen.<div class="legend"><span class="leg"><span class="dot green"></span>Start</span><span class="leg"><span class="dot blue"></span>Zwischenziel</span><span class="leg"><span class="dot red"></span>Ziel</span></div></div></div></div>
