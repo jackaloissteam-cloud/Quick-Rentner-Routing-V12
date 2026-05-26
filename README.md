@@ -1,16 +1,17 @@
-# Quick-Rentner-Routing-V12
+# Quick Rentner Routing V12 - GEFIXT
 
-DRUDE ROUTE NETZ V6.5
+Diese Version ist V6.7.
 
-Nicht direkt als Datei öffnen.
-Nicht external-file://
-Nicht file://
+Geändert:
+- Anzeige: Satz € / Stunde
+- Abrechnung: (Fahrzeit + Aufenthalt) / 60 * Stundensatz
+- Nicht mehr: Kilometer * Satz
 
-Start:
+Start lokal:
 1. ZIP entpacken
 2. START_DRUDE_ROUTE_SERVER.bat doppelklicken
-3. PC: http://localhost:8000/index.html
-4. iPhone im gleichen WLAN:
-   http://DEINE-PC-IP:8000/index.html
+3. Browser öffnen:
+   http://localhost:8000/index.html?v=67
 
-Die PC-IP zeigt das BAT-Fenster als IPv4-Adresse an.
+Wichtig:
+Wenn noch V6.6 erscheint, Browser-Cache leeren oder die URL mit ?v=67 öffnen.
