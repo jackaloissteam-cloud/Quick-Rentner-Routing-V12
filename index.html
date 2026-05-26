@@ -2,24 +2,22 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#667eea">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Drude Route">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Route VPT Jedi Drude V6.8 PRO</title>
+<title>Route VPT Jedi Drude V6.9</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#222}.wrap{max-width:1200px;margin:auto;padding:14px}.card{background:white;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 5px 18px #0001}.head{background:linear-gradient(135deg,#667eea,#764ba2);color:white}.head h1{margin:0 0 8px;font-size:28px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}label{font-weight:700;display:block;margin-bottom:6px}textarea,input{width:100%;box-sizing:border-box;padding:13px;border:2px solid #ddd;border-radius:12px;font-size:16px;font-family:inherit}textarea{min-height:120px}button{padding:13px 20px;border:0;border-radius:12px;background:#667eea;color:white;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}button.secondary{background:#777}button:disabled{opacity:.6;cursor:wait}#map{height:560px;width:100%;border-radius:16px;background:#ddd;overflow:hidden}.log{background:#111;color:#0f0;border-radius:12px;padding:10px;font-family:Consolas,monospace;font-size:13px;max-height:170px;overflow:auto}.err{display:none;background:#f8d7da;color:#721c24;padding:12px;border-radius:12px;margin-top:12px}.hidden{display:none}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}th{background:#f3f3f3;white-space:nowrap}.badge{background:#28a745;color:white;padding:4px 9px;border-radius:10px;font-size:12px;display:inline-block}.sum{background:linear-gradient(135deg,#11998e,#38ef7d);color:white}.sumGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.sumBox{background:rgba(255,255,255,.2);padding:14px;border-radius:12px;text-align:center}.sumBox .v{font-size:22px;font-weight:900}.numIcon{width:34px;height:34px;border-radius:50%;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;border:3px solid white;box-shadow:0 2px 8px #0005}.hint{color:#666;font-size:14px;line-height:1.4}.uploadBlock{border:1px solid #ddd;background:#fafafa;border-radius:14px;padding:12px;margin-bottom:12px}.thumbrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.thumbrow img{width:70px;height:70px;object-fit:cover;border-radius:10px;border:1px solid #ccc}.popupImg{width:72px;height:72px;object-fit:cover;border-radius:9px;margin:3px;border:1px solid #ccc}.installBox{background:#eef2ff;border-left:5px solid #667eea}.small{font-size:14px;color:#666}@media(max-width:760px){.wrap{padding:10px}.head h1{font-size:22px}#map{height:430px;border-radius:12px}th,td{font-size:14px;padding:8px}}
+body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#222}.wrap{max-width:1200px;margin:auto;padding:14px}.card{background:white;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 5px 18px #0001}.head{background:linear-gradient(135deg,#667eea,#764ba2);color:white}.head h1{margin:0 0 8px;font-size:28px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}label{font-weight:700;display:block;margin-bottom:6px}textarea,input{width:100%;box-sizing:border-box;padding:13px;border:2px solid #ddd;border-radius:12px;font-size:16px;font-family:inherit}textarea{min-height:120px}button{padding:13px 20px;border:0;border-radius:12px;background:#667eea;color:white;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}button.secondary{background:#777}button:disabled{opacity:.6;cursor:wait}#map{height:560px;width:100%;border-radius:16px;background:#ddd;overflow:hidden}.log{background:#111;color:#0f0;border-radius:12px;padding:10px;font-family:Consolas,monospace;font-size:13px;max-height:170px;overflow:auto}.err{display:none;background:#f8d7da;color:#721c24;padding:12px;border-radius:12px;margin-top:12px}.hidden{display:none}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}th{background:#f3f3f3;white-space:nowrap}.sum{background:linear-gradient(135deg,#11998e,#38ef7d);color:white}.sumGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.sumBox{background:rgba(255,255,255,.2);padding:14px;border-radius:12px;text-align:center}.sumBox .v{font-size:22px;font-weight:900}.badge{background:#28a745;color:white;padding:4px 9px;border-radius:10px;font-size:12px}.numIcon{width:34px;height:34px;border-radius:50%;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;border:3px solid white;box-shadow:0 2px 8px #0005}.segmentLabel{background:rgba(255,255,255,.96);border:2px solid #667eea;border-radius:999px;color:#222;font-weight:900;font-size:13px;padding:5px 9px;box-shadow:0 2px 10px #0003;white-space:nowrap}.segmentLabel small{font-weight:700;color:#555}.uploadBlock{border:1px solid #ddd;background:#fafafa;border-radius:14px;padding:12px;margin-bottom:12px}.thumbrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.thumbrow img,.popupImg{width:70px;height:70px;object-fit:cover;border-radius:10px;border:1px solid #ccc;margin:3px}.hint{color:#666;font-size:14px;line-height:1.4}@media(max-width:760px){.wrap{padding:10px}.head h1{font-size:22px}#map{height:430px}th,td{font-size:14px;padding:8px}.segmentLabel{font-size:12px;padding:4px 7px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="card head"><h1>📍 Route VPT Jedi Drude V6.8 PRO</h1><div>Bilder auf Markern · echte Straßen-km je Abschnitt · iPhone-Startsymbol · GitHub Pages ready.</div></div>
-
+<div class="card head"><h1>📍 Route VPT Jedi Drude V6.9</h1><div>Bilder auf Markern · echte Straßen-km je Abschnitt · Info-Labels direkt auf der Route.</div></div>
 <div class="card">
 <div class="grid">
 <div><label for="start">Startzeit</label><input type="time" id="start" value="09:00"></div>
@@ -37,7 +35,7 @@ body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#22
 
 <div class="card"><h2>🗺️ Kartenausgabe</h2><div id="map"></div></div>
 
-<div id="uploadCard" class="card hidden"><h2>📸 Bilder direkt auf Marker</h2><div class="hint">Bilder bleiben lokal im Browser. Sie werden als Miniaturen im Marker-Popup angezeigt.</div><div id="uploads"></div></div>
+<div id="uploadCard" class="card hidden"><h2>📸 Bilder direkt auf Marker</h2><div id="uploads"></div></div>
 
 <div id="tableCard" class="card hidden"><h2>📋 Echte Straßen-km je Abschnitt</h2><div style="overflow:auto"><table><thead><tr><th>#</th><th>Von</th><th>Nach</th><th>Abfahrt</th><th>Ankunft</th><th>Straßen-km</th><th>Fahrzeit</th><th>Status</th></tr></thead><tbody id="tbody"></tbody></table></div></div>
 
@@ -49,16 +47,11 @@ body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#22
 <div class="sumBox"><div>Gesamtzeit</div><div class="v"><span id="stime">0</span> min</div></div>
 <div class="sumBox"><div>Abrechnung</div><div class="v"><span id="seuro">0</span> €</div></div>
 </div></div>
-
-<div class="card installBox">
-<h2>📱 iPhone-Startsymbol</h2>
-<div>Wenn diese Seite über GitHub Pages läuft: Safari öffnen → Teilen-Symbol → <b>Zum Home-Bildschirm</b>. Dann startet sie fast wie eine App.</div>
-</div>
 </div>
 
 <script>
 let map,layers=[],lastCoords=[],lastRows=[],imageMap={};
-document.addEventListener("DOMContentLoaded",()=>{map=L.map("map").setView([50.15,8.95],8);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);setTimeout(()=>map.invalidateSize(true),300);log("V6.8 bereit.")});
+document.addEventListener("DOMContentLoaded",()=>{map=L.map("map").setView([50.15,8.95],8);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);setTimeout(()=>map.invalidateSize(true),300);log("V6.9 bereit.")});
 function log(t){const e=document.getElementById("log");e.innerHTML+=t+"<br>";e.scrollTop=e.scrollHeight}
 function err(t){const e=document.getElementById("err");e.textContent=t;e.style.display="block"}
 function clearErr(){const e=document.getElementById("err");e.textContent="";e.style.display="none"}
@@ -81,23 +74,24 @@ const km=part.distance/1000;
 const min=Math.round(part.duration/60);
 totalKm+=km;drive+=min;
 const arr=addMin(dep,min);
-rows.push({i,from:coords[i-1].name,to:coords[i].name,dep,arr,km,min});
+rows.push({i,from:coords[i-1].name,to:coords[i].name,dep,arr,km,min,fromCoord:coords[i-1],toCoord:coords[i]});
 current=arr;
 if(i<coords.length-1)current=addMin(current,stop);
 await sleep(250);
 }
 lastRows=rows;
-drawMap(coords,full);
+drawMap(coords,full,rows);
 renderTable(rows);
 renderSummary(coords.length,totalKm,drive,stop);
 renderUploads(coords);
 log("FERTIG.");
 }catch(e){console.error(e);err(e.message);log("FEHLER: "+e.message)}finally{document.getElementById("btn").disabled=false}}
 function markerIcon(i,total){const color=i===0?"#28a745":(i===total-1?"#dc3545":"#667eea");return L.divIcon({className:"routeNumIcon",html:`<div class="numIcon" style="background:${color}">${i+1}</div>`,iconSize:[36,36],iconAnchor:[18,18]})}
-function buildPopup(i){const c=lastCoords[i];let h=`<b>${i+1}. ${esc(c.name)}</b><br>`;const imgs=imageMap[i]||[];if(imgs.length){imgs.forEach(src=>h+=`<img class="popupImg" src="${src}">`)}else h+="Keine Bilder";return h}
-function drawMap(coords,route){layers.forEach(x=>map.removeLayer(x));layers=[];const pts=route.geometry.coordinates.map(p=>[p[1],p[0]]);const shadow=L.polyline(pts,{color:"#222",weight:9,opacity:.18}).addTo(map);const line=L.polyline(pts,{color:"#667eea",weight:5,opacity:.95}).addTo(map);layers.push(shadow,line);coords.forEach((c,i)=>{const marker=L.marker([c.lat,c.lon],{icon:markerIcon(i,coords.length)}).addTo(map);marker.bindPopup(buildPopup(i));marker._drudeIndex=i;layers.push(marker)});map.fitBounds(line.getBounds(),{padding:[45,45]});setTimeout(()=>map.invalidateSize(true),300)}
-function refreshPopups(){layers.forEach(l=>{if(l instanceof L.Marker && l._drudeIndex!==undefined)l.setPopupContent(buildPopup(l._drudeIndex))})}
-function renderTable(rows){const tb=document.getElementById("tbody");tb.innerHTML=rows.map(r=>`<tr><td>${r.i}</td><td><b>${esc(r.from)}</b></td><td><b>${esc(r.to)}</b></td><td>${r.dep}</td><td>${r.arr}</td><td>${r.km.toFixed(1)} km</td><td>${r.min} min</td><td><span class="badge">OSRM</span></td></tr>`).join("");document.getElementById("tableCard").classList.remove("hidden")}
+function buildPopup(i){const c=lastCoords[i];let h=`<b>${i+1}. ${esc(c.name)}</b><br>`;if(i>0&&lastRows[i-1]){const r=lastRows[i-1];h+=`Von ${esc(r.from)}: ${r.km.toFixed(1)} km · ${r.min} min<br>`}if(i<lastRows.length&&lastRows[i]){const r=lastRows[i];h+=`Nach ${esc(r.to)}: ${r.km.toFixed(1)} km · ${r.min} min<br>`}const imgs=imageMap[i]||[];if(imgs.length){imgs.forEach(src=>h+=`<img class="popupImg" src="${src}">`)}else h+="Keine Bilder";return h}
+function drawMap(coords,route,rows){layers.forEach(x=>map.removeLayer(x));layers=[];const pts=route.geometry.coordinates.map(p=>[p[1],p[0]]);const shadow=L.polyline(pts,{color:"#222",weight:9,opacity:.18}).addTo(map);const line=L.polyline(pts,{color:"#667eea",weight:5,opacity:.95}).addTo(map);layers.push(shadow,line);coords.forEach((c,i)=>{const marker=L.marker([c.lat,c.lon],{icon:markerIcon(i,coords.length)}).addTo(map);marker.bindPopup(buildPopup(i));marker._drudeIndex=i;layers.push(marker)});rows.forEach(r=>addSegmentLabel(r));map.fitBounds(line.getBounds(),{padding:[45,45]});setTimeout(()=>map.invalidateSize(true),300)}
+function addSegmentLabel(r){const lat=(r.fromCoord.lat+r.toCoord.lat)/2;const lon=(r.fromCoord.lon+r.toCoord.lon)/2;const icon=L.divIcon({className:"",html:`<div class="segmentLabel">${r.km.toFixed(1)} km <small>· ${r.min} min</small></div>`,iconSize:null,iconAnchor:[55,14]});const m=L.marker([lat,lon],{icon,interactive:false}).addTo(map);layers.push(m)}
+function refreshPopups(){layers.forEach(l=>{if(l instanceof L.Marker&&l._drudeIndex!==undefined)l.setPopupContent(buildPopup(l._drudeIndex))})}
+function renderTable(rows){document.getElementById("tbody").innerHTML=rows.map(r=>`<tr><td>${r.i}</td><td><b>${esc(r.from)}</b></td><td><b>${esc(r.to)}</b></td><td>${r.dep}</td><td>${r.arr}</td><td>${r.km.toFixed(1)} km</td><td>${r.min} min</td><td><span class="badge">OSRM</span></td></tr>`).join("");document.getElementById("tableCard").classList.remove("hidden")}
 function renderSummary(stations,totalKm,drive,stop){const totalStop=Math.max(0,stations-2)*stop,totalMinutes=drive+totalStop,rate=+document.getElementById("rate").value||13.9,totalEuro=(totalMinutes/60)*rate;document.getElementById("sstops").textContent=stations;document.getElementById("skm").textContent=totalKm.toFixed(1);document.getElementById("sdrive").textContent=drive;document.getElementById("sstop").textContent=totalStop;document.getElementById("stime").textContent=totalMinutes;document.getElementById("seuro").textContent=totalEuro.toFixed(2).replace(".",",");document.getElementById("sumCard").classList.remove("hidden")}
 function renderUploads(coords){const box=document.getElementById("uploads");box.innerHTML="";coords.forEach((c,i)=>{const div=document.createElement("div");div.className="uploadBlock";div.innerHTML=`<b>${i+1}. ${esc(c.name)}</b><br><input type="file" accept="image/*" multiple onchange="handleFiles(this.files,${i})"><div class="thumbrow" id="thumbs${i}"></div>`;box.appendChild(div);renderThumbs(i)});document.getElementById("uploadCard").classList.remove("hidden")}
 function handleFiles(files,i){if(!imageMap[i])imageMap[i]=[];[...files].forEach(f=>{if(!f.type.startsWith("image/"))return;const reader=new FileReader();reader.onload=e=>{imageMap[i].push(e.target.result);renderThumbs(i);refreshPopups()};reader.readAsDataURL(f)})}
