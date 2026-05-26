@@ -1,17 +1,24 @@
-# Quick Rentner Routing V12 - GEFIXT
+# Drude Route V6.8 PRO
 
-Diese Version ist V6.7.
+Neu:
+- Bilder direkt auf Marker-Popups
+- echte Straßen-km je Abschnitt über OSRM
+- Abrechnung nach Zeit: (Fahrzeit + Aufenthalte) / 60 * Satz pro Stunde
+- PWA-Dateien fürs iPhone-Startsymbol
+- GitHub Pages ready
 
-Geändert:
-- Anzeige: Satz € / Stunde
-- Abrechnung: (Fahrzeit + Aufenthalt) / 60 * Stundensatz
-- Nicht mehr: Kilometer * Satz
+GitHub dauerhaft online:
+1. Repo öffnen
+2. Dateien hochladen:
+   - index.html
+   - manifest.webmanifest
+   - icon-192.png
+   - icon-512.png
+   - README.md
+3. Settings → Pages
+4. Source: Deploy from branch
+5. Branch: main / root
+6. Save
 
-Start lokal:
-1. ZIP entpacken
-2. START_DRUDE_ROUTE_SERVER.bat doppelklicken
-3. Browser öffnen:
-   http://localhost:8000/index.html?v=67
-
-Wichtig:
-Wenn noch V6.6 erscheint, Browser-Cache leeren oder die URL mit ?v=67 öffnen.
+iPhone:
+Safari öffnen → GitHub-Pages-URL öffnen → Teilen → Zum Home-Bildschirm.
