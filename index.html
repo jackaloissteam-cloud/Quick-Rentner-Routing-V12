@@ -51,12 +51,12 @@ body{margin:0;background:#f4f6f8;font-family:Segoe UI,Arial,sans-serif;color:#22
 
 <script>
 let map,layers=[],lastCoords=[],lastRows=[],imageMap={};
-document.addEventListener("DOMContentLoaded",()=>{map=L.map("map").setView([50.15,8.95],8);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);setTimeout(()=>map.invalidateSize(true),300);log("V6.9 bereit.")});
+document.addEventListener("DOMContentLoaded",()=>{map=L.map("map").setView([50.15,8.95],8);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(map);const qp=new URLSearchParams(window.location.search).get("orte");if(qp&&qp.trim())document.getElementById("places").value=normalizePlacesInput(qp);setTimeout(()=>map.invalidateSize(true),300);log("V6.9 bereit.")});
 function log(t){const e=document.getElementById("log");e.innerHTML+=t+"<br>";e.scrollTop=e.scrollHeight}
 function err(t){const e=document.getElementById("err");e.textContent=t;e.style.display="block"}
 function clearErr(){const e=document.getElementById("err");e.textContent="";e.style.display="none"}
 function demo(){document.getElementById("places").value="Erlensee Fulda Alsfeld Hanau"}
-function parsePlaces(){let raw=document.getElementById("places").value.trim();raw=raw.replace(/[;,]+/g,"\n");if(!raw.includes("\n"))raw=raw.replace(/\s+/g,"\n");return raw.split("\n").map(x=>x.trim()).filter(Boolean)}
+function normalizePlacesInput(raw){raw=String(raw||"").trim();raw=raw.replace(/[;,]+/g,"\n");raw=raw.replace(/\s+(?:und|nach|dann|über|zu)\s+/gi,"\n");return raw.split("\n").map(x=>x.trim().replace(/\s+/g," ")).filter(Boolean).join("\n")}function parsePlaces(){let raw=normalizePlacesInput(document.getElementById("places").value);if(!raw.includes("\n"))raw=raw.replace(/\s+/g,"\n");return raw.split("\n").map(x=>x.trim()).filter(Boolean)}
 async function geocode(place){log("Ortssuche: "+place);const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=de&q="+encodeURIComponent(place);const r=await fetch(url);if(!r.ok)throw Error("Ortssuche fehlgeschlagen: "+place);const d=await r.json();if(!d.length)throw Error("Ort nicht gefunden: "+place);return{name:place,lat:+d[0].lat,lon:+d[0].lon}}
 async function osrm(coords){const s=coords.map(c=>c.lon+","+c.lat).join(";");const url="https://router.project-osrm.org/route/v1/driving/"+s+"?overview=full&geometries=geojson";const r=await fetch(url);if(!r.ok)throw Error("Routingdienst nicht erreichbar");const d=await r.json();if(!d.routes||!d.routes[0])throw Error("Keine Route gefunden");return d.routes[0]}
 function addMin(t,m){const p=t.split(":").map(Number);const d=new Date();d.setHours(p[0],p[1]+m,0,0);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
